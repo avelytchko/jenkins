@@ -1,6 +1,7 @@
 FROM aarch64/openjdk:8-jdk
 COPY qemu-aarch64-static /usr/bin/
 
+RUN sed -i '/debian-security/d' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 ARG user=jenkins
